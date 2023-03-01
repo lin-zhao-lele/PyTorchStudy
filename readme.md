@@ -23,4 +23,7 @@ Mac computers with Apple silicon or AMD GPUs
 
 -- Xcode command-line tools: xcode-select --install
 
-# 其他
+# 网络教程
+PyTorch官方教程中文版
+
+https://pytorch123.com

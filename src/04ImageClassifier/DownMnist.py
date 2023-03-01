@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 
 # torch.manual_seed(1)    # reproducible
 
+# 把MNIST数据集转换成图片和txt
+# http://www.waitingfy.com/archives/3539
 
 DOWNLOAD_MNIST = False
 

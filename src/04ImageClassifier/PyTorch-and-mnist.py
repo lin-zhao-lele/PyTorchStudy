@@ -4,7 +4,8 @@ from torchvision import datasets, transforms
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-
+import time
+T1 = time.time()
 # 来源 MNIST数据集手写数字识别
 # https://pytorch-tutorial.readthedocs.io/en/latest/tutorial/chapter03_intermediate/3_2_1_cnn_convnet_mnist/
 
@@ -87,3 +88,6 @@ def test(model, device, test_loader):
 for epoch in range(1, EPOCHS + 1):
     train(model, DEVICE, train_loader, optimizer, epoch)
     test(model, DEVICE, test_loader)
+
+T2 = time.time()
+print('程序运行时间:%s分钟' % ((T2 - T1)/60))

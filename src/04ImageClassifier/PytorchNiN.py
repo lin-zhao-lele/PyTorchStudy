@@ -4,7 +4,8 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 from d2l import torch as d2l
-
+import time
+T1 = time.time()
 # Pytorch 基于NiN的服饰识别（使用Fashion-MNIST数据集）
 # https://developer.aliyun.com/article/1069741
 
@@ -85,16 +86,16 @@ def train(net, train_iter, test_iter, epochs, lr, device):
     print(f'{metric[2] * epochs / timer.sum():.1f} examples/sec '
           f'on: [{str(device)}]')
     torch.save(net.state_dict(),
-               f"E:\\Deep Learning\\model\\NiN_Fashion-MNIST_Epoch{epochs}_Accuracy{test_acc*100:.2f}%.pth")
+               f"./Model/NiN_Fashion-MNIST_Epoch{epochs}_Accuracy{test_acc*100:.2f}%.pth")
 
 
 # 5.训练模型（或加载模型）
 # 如果环境正确配置了CUDA，则会由GPU进行训练。加载模型需要根据自身情况修改路径。
-epochs, lr = 10, 0.1
+epochs, lr = 1, 0.1
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 train(net, train_loader, test_loader, epochs, lr, device)
 # 加载保存的模型
-# net.load_state_dict(torch.load(r"E:\Deep Learning\model\NiN_Fashion-MNIST_Epoch20_Accuracy89.41%.pth"))
+# net.load_state_dict(torch.load(r".\Model\NiN_Fashion-MNIST_Epoch20_Accuracy89.41%.pth"))
 
 # 6.可视化展示
 def show_predict():
@@ -121,4 +122,6 @@ def show_predict():
 
 show_predict()
 
+T2 = time.time()
+print('程序运行时间:%s分钟' % ((T2 - T1)/60))
 # 7.预测图
